@@ -1,0 +1,20 @@
+body{
+    background-color:rgb(210, 221, 188);
+    text-align: center;
+}
+h1{
+    background-color:rgb(113, 179, 113);
+}
+h1,h2,footer{
+    border: 1px solid black;
+    display: block;
+}
+div{
+    margin-top: 100px;
+    background-color: rgb(113, 179, 113);
+    margin-left: 600px;
+    margin-right: 600px;
+}
+footer{
+    margin-top: 220px;
+}
