@@ -188,11 +188,12 @@ def edit(id):
     cur.execute('SELECT * FROM accounts WHERE id = %s',(id))
     mysql.connect().commit()
     data = cur.fetchone()
-    return render_template('edit_users.html', i = data[0])
+    return render_template('edit_users.html', i = data)
 
 
 @app.route('/update/<id>', methods = ['POST'])
 def update(id):
+    print(id)
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -203,8 +204,8 @@ def update(id):
         SET username = %s,
             password = %s,
             email = %s
-        WHERE id = %s
-        """, (username, password, email, id))
+        WHERE id = '4'
+        """, (username, password, email))
         mysql.connect().commit()
         flash('Account update Succesfully')
         return redirect(url_for('users'))
