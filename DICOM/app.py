@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flaskext.mysql import MySQL
 import re
 
+from pymysql import connect
+
 app = Flask(__name__)
 
 # Change this to your secret key (can be anything, it's for extra protection)
@@ -193,20 +195,14 @@ def edit(id):
 
 @app.route('/update/<id>', methods = ['POST'])
 def update(id):
-    print(id)
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         email = request.form['email']
-        cur = mysql.connect().cursor()
-        cur.execute("""
-        UPDATE accounts
-        SET username = %s,
-            password = %s,
-            email = %s
-        WHERE id = '4'
-        """, (username, password, email))
-        mysql.connect().commit()
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute('UPDATE accounts SET username = %s, password = %s,email = %s WHERE id = %s', (username, password,email,id))
+        conn.commit()
         flash('Account update Succesfully')
         return redirect(url_for('users'))
 
