@@ -23,6 +23,10 @@ mysql.init_app(app)
 
 print(mysql)
 
+@app.route('/')
+def begin():
+    return render_template('begin.html')
+
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     # Output message if something goes wrong...
@@ -100,7 +104,7 @@ def register():
     return render_template('register.html', msg=msg)
 
     # http://localhost:5000/pythinlogin/home - this will be the home page, only accessible for loggedin users
-@app.route('/home')
+@app.route('/home', methods = ['GET', 'POST'])
 def home():
     # Check if user is loggedin
     if 'loggedin' in session:
