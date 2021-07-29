@@ -1,0 +1,16 @@
+{% extends 'layout_admin.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block options %}
+<h1>Dicom</h1>
+<a href="{{ url_for('home')}}"><i class="fas fa-home"></i>Home</a>
+<a href="{{ url_for('profile')}}"><i class="fas fa-user-circle"></i>Profile</a>
+<a href="{{ url_for('register')}}"><i class="fas fa-user"></i>Users</a>
+<a href="{{ url_for('logout')}}"><i class="fas fa-sing-out-all"></i>Logout</a>
+{% endblock %}
+
+{% block content %}
+<h2>Home</h2>
+<p>Welcome, {{username}}</p>
+{% endblock %}

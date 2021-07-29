@@ -1,0 +1,37 @@
+{% extends 'layout_admin.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+<h2>Users</h2>
+<p>Current users on the platform:</p>
+{% for i in usuarios: %}
+<div>
+<table>
+    <tr>
+        <th>Nombre:</th>        
+        <td>            
+            <OPTION value={{i[0]}}>{{i[1]}}</OPTION>
+        </td>
+    </tr>    
+    <tr>
+        <th>Correo:</th>
+        <td>
+            <OPTION value={{i[0]}}>{{i[3]}}</OPTION>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="/edit/{{i.0}}" class="btn btn-secondary">Edit</a>
+            <a href="/delete/{{i.0}} " class="btn btn-danger btn-delete">Delete</a>
+        </td>
+    </tr>
+</table>
+</div>
+{% endfor %}
+
+<button type="submit" class="btn btn-success btn-block">
+    <a href="{{ url_for('register')}}" class="active" style="color:white">Register</a>
+</button>
+
+{% endblock %}
